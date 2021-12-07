@@ -7,7 +7,7 @@ adam = Teacher.create(
     last_name: "La Rosa", 
     username: "Potato", 
     email: "potato@gmail.com",
-    password_digest: "p0tat03!"
+    password: "p0tat03!"
 )
 
 # Create Students

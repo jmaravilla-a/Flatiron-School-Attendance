@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
-    before_action :authenticate_user
+    skip_before_action :authorized, only: [:create]
     
     def create
         teacher = Teacher.find_by_username(params[:username])
-        if user&.authenticate(params[:password])
+        if teacher&.authenticate(params[:password])
           session[:id] = teacher.id 
           render json: teacher, status: :ok
         else 

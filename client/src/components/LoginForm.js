@@ -13,6 +13,24 @@ function LoginForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    fetch("/sessions", {
+      method: "POST", 
+      headers: {
+        'Content-Type':'application/json', 
+      }, 
+      body: JSON.stringify({
+        username: userName, 
+        password
+      })
+    })
+    .then(r => {
+      console.log(r)
+      return r.json()
+    })
+    .then(data => {
+      console.log(data)
+      // console.log()
+    })
     
   }
 
@@ -36,7 +54,7 @@ function LoginForm() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button block size="lg" type="submit" disabled={!validateForm()}>
+        <Button blocksize="lg" type="submit" disabled={!validateForm()}>
           Login
         </Button>
       </Form>

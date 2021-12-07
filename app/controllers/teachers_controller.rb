@@ -1,5 +1,5 @@
 class TeachersController < ApplicationController
-    # skip_before_action :authorized, only: :create
+    skip_before_action :authorized, only: :create
 
     def create
         teacher = Teacher.create!(teacher_params)
