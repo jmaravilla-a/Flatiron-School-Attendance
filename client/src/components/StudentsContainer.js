@@ -14,9 +14,12 @@ function StudentsContainer() {
     }, []);
 
 
-
+    console.log(students)
     return (
         <Layout>
+            <button onClick={() => {
+                fetch("/whatever")
+            }}> text </button>
         <section className="student_container">
             <h2>Student List</h2>
             {students.map((student) => (

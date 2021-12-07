@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 function StudentForm({ studentId, onAddStudent }) {
   const [students, setStudents] = useState([]);
   const [studentId, studentId] = useState("");
-  const [rating, setRating] = useState("");
+
   const [formErrors, setFormErrors] = useState([]);
 
   useEffect(() => {
@@ -15,9 +15,9 @@ function StudentForm({ studentId, onAddStudent }) {
   function handleSubmit(e) {
     e.preventDefault();
     const formData = {
-      student_id: studentId,
-      student_id: studentId,
-      rating: parseInt(rating),
+      first_name: studentId,
+      last_name: studentId,
+      teacher_id: parseInt(rating),
     };
     fetch("/appearances", {
       method: "POST",
@@ -53,22 +53,14 @@ function StudentForm({ studentId, onAddStudent }) {
           </option>
         ))}
       </select>
-      {/* <label htmlFor="rating">Rating:</label>
-      <input
-        id="rating"
-        name="rating"
-        type="number"
-        value={rating}
-        onChange={(e) => setRating(e.target.value)}
-      />
-      {formErrors.length > 0
+      {Errors.length > 0
         ? formErrors.map((err) => (
             <p key={err} style={{ color: "red" }}>
-              {err}
+              {error}
             </p>
           ))
         : null}
-      <button type="submit">Add To Episode</button> */}
+      <button type="submit">Add To Episode</button> 
     </form>
   );
 }
