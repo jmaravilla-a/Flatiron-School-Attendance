@@ -2,11 +2,13 @@ import {useState} from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
+  
   function validateForm() {
     return userName.length > 0 && password.length > 0;
   }
@@ -23,13 +25,15 @@ function LoginForm() {
         password
       })
     })
-    .then(r => {
-      console.log(r)
-      return r.json()
-    })
-    .then(data => {
-      console.log(data)
-      // console.log()
+    .then((r) => {
+      if (r.ok) {
+        r.json()
+        navigate('/homepage');
+      } else
+      r.json()
+      .then((err) => {
+        console.error(err)
+      })
     })
     
   }
