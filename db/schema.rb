@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_12_06_204533) do
   create_table "student_days", force: :cascade do |t|
     t.bigint "student_id", null: false
     t.bigint "day_id", null: false
-    t.boolean "present"
+    t.boolean "present", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["day_id"], name: "index_student_days_on_day_id"

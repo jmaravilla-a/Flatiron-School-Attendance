@@ -1,14 +1,27 @@
 import React from 'react';
-// import StudentForm from './StudentForm';
 import StudentsContainer from './StudentsContainer';
-// import { Link } from 'react-router';
-// import StudentForm from './StudentForm';
+import Navbar from './NavBar';
+import StudentForm from './StudentForm';
 
 
 function HomePage() {
+  const [students, setStudents] = useState([])
+    const resp = (data) => data.json()
+    useEffect(() => {
+        fetch("/students")
+        .then(resp)
+        .then(setStudents)
+    }, []);
+
+    const handleAddStudent = () => {
+
+
+    }
     return (
       <div>
-        <StudentsContainer />
+        <Navbar />
+        <StudentForm students={students} handleAddStudent={handleAddStudent}/>
+        <StudentsContainer students={students} />
       </div>
     );
   }

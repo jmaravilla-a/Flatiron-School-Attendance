@@ -1,11 +1,9 @@
-import { Link } from "react-router-dom";
+import '../App.css'
 
 function Navbar() {
   return (
     <header>
-      <Link to="/homepage">
-        <h1>Flatiron School Attendance App</h1>
-      </Link>
+        <img className = 'flatiron-logo' src='https://instructure-uploads.s3.amazonaws.com/account_158020000000000001/attachments/43728/logo-primary.svg' />
     </header>
   );
 }

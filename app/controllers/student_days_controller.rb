@@ -1,2 +1,4 @@
-class StudentDaysController < ApplicationController
+class StudentDaysController < ApplicationController 
+    
+    
 end

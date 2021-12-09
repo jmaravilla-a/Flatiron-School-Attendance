@@ -2,7 +2,6 @@ import '../App.css';
 import { Routes, Route } from 'react-router-dom';
 import Login from './Login';
 import HomePage from './HomePage';
-import Navbar from './NavBar';
 
 function App() {
   return (

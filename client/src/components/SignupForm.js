@@ -1,8 +1,10 @@
-import {useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import './Login.css';
+import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import Navbar from './NavBar';
+import './Login.css';
+
 
 function SignupForm() {
   const [teacherInfo, setTeacherInfo] = useState({
@@ -56,10 +58,11 @@ function SignupForm() {
 
   const handleChange = (e) => {
     setTeacherInfo({...teacherInfo, [e.target.name]:e.target.value})
-}
+  }
 
   return (
     <div className="signUp">
+      <Navbar />
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="firstName">
           <Form.Label>First Name</Form.Label>

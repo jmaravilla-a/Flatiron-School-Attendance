@@ -104,7 +104,7 @@ monday = Day.create(
 
 # Create Student_Days
 Student.all.each { |s|
-    StudentDay.create(present: true, day_id: monday.id, student_id: s.id)
+    StudentDay.create(present: false, day_id: monday.id, student_id: s.id)
 }
 
 puts "Done Seeding 🌱"

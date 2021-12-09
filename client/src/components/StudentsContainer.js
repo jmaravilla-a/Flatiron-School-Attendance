@@ -3,18 +3,8 @@ import { useEffect, useState } from "react";
 import styled from "styled-components"
 
 
-function StudentsContainer() {
+function StudentsContainer(students) {
 
-    const [students, setStudents] = useState([])
-    const resp = (data) => data.json()
-    useEffect(() => {
-        fetch("/students")
-        .then(resp)
-        .then(setStudents)
-    }, []);
-
-
-    console.log(students)
     return (
         <Layout>
         <div className="student_container">
