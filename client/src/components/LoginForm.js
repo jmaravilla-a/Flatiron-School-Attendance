@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./NavBar";
 
 function LoginForm() {
   const [userName, setUserName] = useState("");
@@ -39,7 +40,8 @@ function LoginForm() {
   }
 
   return (
-    <div className="Login">
+    <div className="login-form">
+      <Navbar />
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="userName">
           <Form.Label>Username</Form.Label>
@@ -58,7 +60,7 @@ function LoginForm() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button blocksize="lg" type="submit" disabled={!validateForm()}>
+        <Button className='signin-button' blocksize="lg" type="submit" disabled={!validateForm()}>
           Login
         </Button>
       </Form>

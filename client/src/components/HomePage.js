@@ -1,5 +1,5 @@
 import React from 'react';
-import StudentForm from './StudentForm';
+// import StudentForm from './StudentForm';
 import StudentsContainer from './StudentsContainer';
 // import { Link } from 'react-router';
 // import StudentForm from './StudentForm';
@@ -7,10 +7,9 @@ import StudentsContainer from './StudentsContainer';
 
 function HomePage() {
     return (
-      <header>
-        Home Page
+      <div>
         <StudentsContainer />
-      </header>
+      </div>
     );
   }
   

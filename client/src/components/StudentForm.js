@@ -1,68 +1,89 @@
-// import { useEffect, useState } from "react";
+import {useState} from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
-// function StudentForm({ studentId, onAddStudent }) {
-//   const [students, setStudents] = useState([]);
-//   const [studentId, studentId] = useState("");
+function StudentForm() {
+    const [formData, setFormData] = useState({
+        first_name: '', 
+        last_name: '', 
+        teacher_id: ''
+    });
 
-//   const [formErrors, setFormErrors] = useState([]);
+    const navigate = useNavigate();
+    
+    function validateForm() {
+        return( 
+        formData.first_name.length > 0 &&
+        formData.last_name.length > 0 &&
+        formData.teacher_id.length > 0
+        );
+    }
 
-//   useEffect(() => {
-//     fetch("/Students")
-//       .then((r) => r.json())
-//       .then(setStudents);
-//   }, []);
+    function handleSubmit(event) {
+        event.preventDefault();
+        fetch("/students", {
+        method: "POST", 
+        headers: {
+            'Content-Type':'application/json', 
+        }, 
+        body: JSON.stringify({
+            username: userName, 
+            password
+        })
+        })
+        .then((r) => {
+        if (r.ok) {
+            r.json()
+            navigate('/homepage');
+        } else
+        r.json()
+        .then((err) => {
+            console.error(err)
+        })
+        })
+        
+    }
 
-//   function handleSubmit(e) {
-//     e.preventDefault();
-//     const formData = {
-//       first_name: studentId,
-//       last_name: studentId,
-//       teacher_id: parseInt(rating),
-//     };
-//     fetch("/appearances", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(formData),
-//     }).then((r) => {
-//       if (r.ok) {
-//         r.json().then((appearance) => {
-//           onAddStudent(appearance.student);
-//           setFormErrors([]);
-//         });
-//       } else {
-//         r.json().then((err) => setFormErrors(err.errors));
-//       }
-//     });
-//   }
+    return (
+        <div className="studentForm">
+        <Form onSubmit={handleSubmit}>
+            <Form.Group size="lg" controlId="firstName">
+            <Form.Label>firstName</Form.Label>
+            <Form.Control
+                autoFocus
+                type="text"
+                name="first_name"
+                value={formData.first_name}
+                onChange={(e) => setFormData(e.target.value)}
+            />
+            </Form.Group>
+            <Form.Group size="lg" controlId="lastName">
+            <Form.Label>lastName</Form.Label>
+            <Form.Control
+                type="text"
+                name="last_name"
+                value={formData.last_name}
+                onChange={(e) => setFormData(e.target.value)}
+            />
+            </Form.Group>
+            <Form.Group size="lg" controlId="password">
+            <Form.Label>Student Form</Form.Label>
+            <Form.Control
+                type="number"
+                name="teacher_id"
+                value={formData.teacher_id}
+                onChange={(e) => setFormData(e.target.value)}
+            />
+            </Form.Group>
+            <Button blocksize="lg" type="submit" disabled={!validateForm()}>
+            Student
+            </Button>
+        </Form>
+        </div>
+    );
+}
 
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <label htmlFor="student_id">Student:</label>
-//       <select
-//         id="student_id"
-//         name="student_id"
-//         value={studentId}
-//         onChange={(e) => setStudentId(e.target.value)}>
-            
-//         <option value="">Select a Student</option>
-//         {guests.map((student) => (
-//           <option key={student.id} value={student.id}>
-//             {student.name}
-//           </option>
-//         ))}
-//       </select>
-//       {Errors.length > 0
-//         ? formErrors.map((err) => (
-//             <p key={err} style={{ color: "red" }}>
-//               {error}
-//             </p>
-//           ))
-//         : null}
-//       <button type="submit">Add To Episode</button> 
-//     </form>
-//   );
-// }
 
-// export default StudentForm;
+export default StudentForm;

@@ -17,15 +17,12 @@ function StudentsContainer() {
     console.log(students)
     return (
         <Layout>
-            <button onClick={() => {
-                fetch("/whatever")
-            }}> text </button>
-        <section className="student_container">
+        <div className="student_container">
             <h2>Student List</h2>
             {students.map((student) => (
               <Students key={student.id} student={student} />
             ))}
-        </section>
+        </div>
         </Layout>
     );
 }
@@ -33,7 +30,7 @@ function StudentsContainer() {
     export default StudentsContainer;
 
 
-    const Layout = styled.section`
+    const Layout = styled.div`
     height: 80vh;
     width: 75%;
     border: 2px solid white;

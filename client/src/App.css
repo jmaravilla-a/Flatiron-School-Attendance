@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+
+.student-card {
+  display: flex;
+  justify-content: space-around;
+}
+
+.signin-button {
+  border-radius: 20px;
+  color: #fff;
+  background: #0067b8;
+  position: relative;
+  padding: 9px 27px;
+  margin-top: 50px;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.button-container {
+  /* margin: 0 0.5rem; */
+  margin-right: 2rem;
+}
+
+.signup-button {
+  display: inline-block;
+  padding: 1px 7px 2px;
+  cursor: default;
+  font: 400 15px system-ui;
+  color: black;
+  background-color: white;
+}
