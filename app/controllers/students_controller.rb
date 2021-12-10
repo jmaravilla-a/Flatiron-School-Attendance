@@ -20,7 +20,6 @@ class StudentsController < ApplicationController
     
     def destroy
         student = @current_user.students.all.find_by_id!(params[:id])
-        # byebug
         student.destroy
         render json: {}, status: :ok
     end

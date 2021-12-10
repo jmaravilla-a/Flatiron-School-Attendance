@@ -2,6 +2,7 @@ import {useState} from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
+import styled from "styled-components";
 
 
 function StudentForm({handleAddStudent}) {
@@ -58,34 +59,49 @@ function StudentForm({handleAddStudent}) {
     }
 
     return (
-        <div className="studentForm">
-        <Form onSubmit={handleSubmit}>
-            <Form.Group size="lg" controlId="firstName">
-            <Form.Label>First Name</Form.Label>
-            <Form.Control
-                autoFocus
-                type="text"
-                name="first_name"
-                value={formData.first_name}
-                onChange={handleChange}
-            />
-            </Form.Group>
-            <Form.Group size="lg" controlId="lastName">
-            <Form.Label>lastName</Form.Label>
-            <Form.Control
-                type="text"
-                name="last_name"
-                value={formData.last_name}
-                onChange={handleChange}
-            />
-            </Form.Group>
-            <Button blocksize="lg" type="submit" disabled={!validateForm()}>
-            Add Student!
-            </Button>
-        </Form>
-        </div>
+        <Layout >
+            <div className="studentForm">
+            <Form onSubmit={handleSubmit}>
+                <Form.Group size="lg" controlId="firstName">
+                <Form.Label>First Name</Form.Label>
+                <Form.Control
+                    autoFocus
+                    type="text"
+                    name="first_name"
+                    value={formData.first_name}
+                    onChange={handleChange}
+                />
+                </Form.Group>
+                <Form.Group size="lg" controlId="lastName">
+                <Form.Label>lastName</Form.Label>
+                <Form.Control
+                    type="text"
+                    name="last_name"
+                    value={formData.last_name}
+                    onChange={handleChange}
+                />
+                </Form.Group>
+                <Button blocksize="lg" type="submit" disabled={!validateForm()}>
+                Add Student!
+                </Button>
+            </Form>
+            </div>
+        </Layout>
     );
 }
 
 
 export default StudentForm;
+
+const Layout = styled.div`
+height: 12vh;
+width: 10%;
+border: 2px solid white;
+border-radius: 3px;
+box-shadow: 0 0 3px gray;
+float:left;
+text-align: center;
+margin: 1rem 0rem 0rem 3.3rem;
+background: rgba(255, 255, 255, 0.8);
+overflow: scroll;
+`;

@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
-function EditNameForm ({updateStudentName, student:{id, first_name, last_name}}) {
+function EditNameForm ({handleToggle, updateStudentName, student:{id, first_name, last_name}}) {
 
     const [formData, setFormData] = useState({
         first_name: '',
@@ -84,7 +84,7 @@ function EditNameForm ({updateStudentName, student:{id, first_name, last_name}})
                 placeholder='New'
             />
             </Form.Group>
-            <Button blocksize="lg" type="submit" disabled={!validateForm()}>
+            <Button onClick={handleToggle} blocksize="lg" type="submit" disabled={!validateForm()}>
             Finished!
             </Button>
         </Form>

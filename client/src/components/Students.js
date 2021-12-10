@@ -15,15 +15,15 @@ function Students ({student, updateStudentName, handleRemove}) {
     }
     return (
         <div className="student-card">
+                {toggle ? '' : <EditNameForm handleToggle={handleToggle} student={student} updateStudentName={updateStudentName}/>}
             <p>{student.last_name}, {student.first_name}</p>
             <div className="button-container">
                 {presentOrAbsent ? 
-                <button onClick={handleClick}> Present </button> :
-                <button onClick={handleClick}> Absent </button>
+                <button className="button-container" onClick={handleClick}> Present </button> :
+                <button className="button-container" onClick={handleClick}> Absent </button>
                 }
-                <button onClick={handleToggle}>{toggle ? 'Edit' : 'Close'}</button>
-                <button onClick={() => handleRemove(student.id)}> Remove </button>
-                {toggle ? '' : <EditNameForm student={student} updateStudentName={updateStudentName}/>}
+                <button className="button-container" onClick={handleToggle}>{toggle ? 'Edit' : 'Close'}</button>
+                <button className="button-container" onClick={() => handleRemove(student.id)}> Remove </button>
             </div>
         </div>
 

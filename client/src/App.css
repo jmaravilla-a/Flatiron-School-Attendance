@@ -63,6 +63,10 @@
 .button-container {
   margin-right: 1rem;
   display: inline-flex;
+  justify-content: space-between;
+  max-width: 100px;
+  max-height: 30px;
+  /* text-align: justify; */
 }
 
 .signup-button {
