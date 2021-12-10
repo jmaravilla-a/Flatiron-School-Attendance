@@ -1,17 +1,12 @@
-import {useState} from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import "./Login.css";
-// import { useNavigate } from "react-router-dom";
 
-function StudentForm({handleAddStudent}) {
+
+function EditNameForm () {
+
     const [formData, setFormData] = useState({
         first_name: '',
         last_name: ''
     });
 
-    // const navigate = useNavigate();
-    
     function validateForm() {
         return( 
         formData.first_name.length > 0 &&
@@ -29,7 +24,8 @@ function StudentForm({handleAddStudent}) {
         }, 
         body: JSON.stringify({
             first_name,
-            last_name
+            last_name,
+            teacher_id: '@current_user.id'
         })
         })
         .then((r) => {
@@ -54,9 +50,6 @@ function StudentForm({handleAddStudent}) {
         })
     }
 
-    const handleChange = (e) => {
-        setFormData({...formData, [e.target.name]:e.target.value})
-    }
 
     return (
         <div className="studentForm">
@@ -85,8 +78,5 @@ function StudentForm({handleAddStudent}) {
             </Button>
         </Form>
         </div>
-    );
+    )
 }
-
-
-export default StudentForm;

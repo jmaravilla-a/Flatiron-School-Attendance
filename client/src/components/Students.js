@@ -6,7 +6,7 @@ function Students ({student}) {
 
     const handleClick = () => {
         setPresentOrAbsent(presentOrAbsent => !presentOrAbsent)
-        // fetch
+
     }
     return (
         <div className="student-card">
@@ -16,7 +16,8 @@ function Students ({student}) {
                 <button onClick={handleClick}> Present </button> :
                 <button onClick={handleClick}> Absent </button>
                 }
-                <button> ✍️ Comments </button>
+                <button> Edit Name </button>
+                <button> Remove </button>
             </div>
         </div>
 

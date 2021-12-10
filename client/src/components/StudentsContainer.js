@@ -1,9 +1,8 @@
 import Students from "./Students";
-import { useEffect, useState } from "react";
 import styled from "styled-components"
 
 
-function StudentsContainer(students) {
+function StudentsContainer({students}) {
 
     return (
         <Layout>

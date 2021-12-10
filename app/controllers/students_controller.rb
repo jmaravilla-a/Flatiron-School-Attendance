@@ -11,7 +11,9 @@ class StudentsController < ApplicationController
     end
     
     def create
-        student = Student.create!(first_name: params[:first_name], last_name: params[:last_name], teacher_id: @current_user.id)
+        student = Student.new(student_params)
+        student.teacher = @current_user
+        student.save!
         render json: student, status: :created
     end
     
@@ -21,9 +23,9 @@ class StudentsController < ApplicationController
         render json: {}, status: :ok
     end
 
-    # private
+    private
 
-    # def student_params
-    #     params.permit(:first_name, :last_name, :teacher_id)
-    # end
+    def student_params
+        params.permit(:first_name, :last_name)
+    end
 end
