@@ -38,7 +38,6 @@ function StudentForm({handleAddStudent}) {
             .then(student => {
                 handleAddStudent(student)
             })
-            // navigate('/homepage');
         } else
         r.json()
         .then((err) => {

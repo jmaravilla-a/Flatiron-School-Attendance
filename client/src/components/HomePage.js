@@ -10,6 +10,7 @@ function HomePage() {
 
   const potato = (data) => data.json()
 
+
   useEffect(() => {
       fetch("/students")
       .then(potato)
