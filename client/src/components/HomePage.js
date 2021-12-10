@@ -20,11 +20,30 @@ function HomePage() {
     const newStudents = [...students, student]
     setStudents(newStudents)
   }
+
+  const updateStudentName = (updatedStudent) => {
+    const newSetOfStudents = students.filter(student => student.id !== updatedStudent.id)
+    const completeStudents = [updatedStudent, ...newSetOfStudents]
+    setStudents(completeStudents)
+  }
+
+  const handleRemove = (id) => {
+    fetch(`/students/${id}`, {
+      method: 'DELETE', 
+    }).then((r) => {
+      if (r.ok) {
+        setStudents((students) => 
+        students.filter((student) => student.id !== id)
+        )
+      }
+    })
+  }
+
   return (
     <div>
       <Navbar />
       <StudentForm handleAddStudent={handleAddStudent}/>
-      <StudentsContainer students={students} />
+      <StudentsContainer students={students} updateStudentName={updateStudentName} handleRemove={handleRemove}/>
     </div>
   );
   }

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :teachers, only: [:create]
-  resources :students, only: [:index, :show, :create, :destroy]
+  resources :students, only: [:index, :update, :create, :destroy]
   resources :sessions, only: [:create]
   # resources :student_days
   resources :days

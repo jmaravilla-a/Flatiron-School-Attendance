@@ -2,12 +2,7 @@ class StudentsController < ApplicationController
 
     def index
         students = current_user.students
-        render json: students, status: :ok
-    end
-    
-    def show
-        student = Student.all.find_by_id!(id: params[:id])
-        render json: student 
+        render json: students.order(last_name: :asc), status: :ok
     end
     
     def create
@@ -16,12 +11,21 @@ class StudentsController < ApplicationController
         student.save!
         render json: student, status: :created
     end
+
+    def update 
+        student = Student.find_by!(id: params[:id])
+        student.update!(student_params)
+        render json: student, status: :ok
+    end
     
     def destroy
-        student = Student.all.find_by_id!(id: params[:id])
+        student = @current_user.students.all.find_by_id!(params[:id])
+        # byebug
         student.destroy
         render json: {}, status: :ok
     end
+
+
 
     private
 

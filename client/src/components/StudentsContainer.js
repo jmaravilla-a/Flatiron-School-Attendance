@@ -2,14 +2,14 @@ import Students from "./Students";
 import styled from "styled-components"
 
 
-function StudentsContainer({students}) {
-
+function StudentsContainer({students, updateStudentName, handleRemove}) {
+    
     return (
         <Layout>
         <div className="student_container">
             <h2>Student List</h2>
             {students.map((student) => (
-              <Students key={student.id} student={student} />
+              <Students key={student.id} student={student} handleRemove={handleRemove} updateStudentName={updateStudentName}/>
             ))}
         </div>
         </Layout>
